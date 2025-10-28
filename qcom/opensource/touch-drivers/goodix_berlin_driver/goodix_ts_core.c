@@ -2116,17 +2116,7 @@ static int goodix_get_mode_value(void *private, enum touch_mode mode)
 	case TOUCH_MODE_NONUI_MODE:
 		return ts_core->nonui_enabled ? 2 : 0;
 	case TOUCH_MODE_REPORT_RATE:
-		return ts_core->high_report_rate;
-	case TOUCH_MODE_GAME_MODE:
-		return ts_core->game_mode;
-	case TOUCH_MODE_TOUCH_UP_THRESHOLD:
-	case TOUCH_MODE_TOUCH_TOLERANCE:
-	case TOUCH_MODE_TOUCH_AIM_SENSITIVITY:
-	case TOUCH_MODE_TOUCH_TAP_STABILITY:
-	case TOUCH_MODE_TOUCH_EDGE_FILTER:
-	case TOUCH_MODE_PANEL_ORIENTATION:
-	case TOUCH_MODE_EXPERT_MODE:
-		return ts_core->touch_filters[touch_mode_to_filter(mode)];
+		return ts_core->high_report_rate ? 1 : 0;
 	default:
 		ts_err("handler got mode %d, not implemented", mode);
 		return -EINVAL;

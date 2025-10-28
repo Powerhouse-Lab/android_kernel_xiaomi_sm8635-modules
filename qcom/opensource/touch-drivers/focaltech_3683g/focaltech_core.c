@@ -2754,17 +2754,7 @@ static int fts_get_mode_value(void *private, enum touch_mode mode)
     case TOUCH_MODE_FOD_PRESS_GESTURE:
         return (fts_data->gesture_status & GESTURE_FOD_EN) ? 1 : 0;
     case TOUCH_MODE_REPORT_RATE:
-	    return fts_data->high_report_rate;
-    case TOUCH_MODE_GAME_MODE:
-	    return fts_data->game_mode;
-    case TOUCH_MODE_TOUCH_UP_THRESHOLD:
-    case TOUCH_MODE_TOUCH_TOLERANCE:
-    case TOUCH_MODE_TOUCH_AIM_SENSITIVITY:
-    case TOUCH_MODE_TOUCH_TAP_STABILITY:
-    case TOUCH_MODE_TOUCH_EDGE_FILTER:
-    case TOUCH_MODE_PANEL_ORIENTATION:
-    case TOUCH_MODE_EXPERT_MODE:
-	    return fts_data->touch_filters[touch_mode_to_filter(mode)];
+        return fts_data->high_report_rate ? 1 : 0;
     default:
         return -EINVAL;
     }
